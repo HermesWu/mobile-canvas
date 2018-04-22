@@ -49,6 +49,7 @@ function listenToUser(canvas, context) {
 			}
 		}
 		canvas.ontouchmove = function (e) {
+			e.preventDefault();
 			var x = e.touches[0].clientX
 			var y = e.touches[0].clientY
 			if(using) {
