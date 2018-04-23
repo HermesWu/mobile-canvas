@@ -138,7 +138,7 @@ function listenToUser(canvas, context) {
 			var y = e.clientY
 			if(using) {
 				if(eraserEnabled) {
-					context.clearRect(x-7.5, y-7.5, 15, 15)
+					context.clearRect(x-10, y-10, 20, 20)
 				}
 				else{
 					var newPoint = {'x': x, 'y': y}
