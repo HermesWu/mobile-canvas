@@ -2,6 +2,39 @@ var canvas = document.getElementById('x')
 var context = canvas.getContext('2d')
 autoSetCanvasSize(canvas)
 listenToUser(canvas, context)
+red.onclick = function(e){
+	context.fillStyle = 'red'
+	context.strokeStyle = 'red'
+	red.classList.add('active')
+	green.classList.remove('active')
+	blue.classList.remove('active')
+	yellow.classList.remove('active')
+}
+green.onclick = function(e){
+	context.fillStyle = 'green'
+	context.strokeStyle = 'green'
+	green.classList.add('active')
+	red.classList.remove('active')
+	blue.classList.remove('active')
+	yellow.classList.remove('active')
+}
+blue.onclick = function(e){
+	context.fillStyle = 'blue'
+	context.strokeStyle = 'blue'
+	blue.classList.add('active')
+	green.classList.remove('active')
+	red.classList.remove('active')
+	yellow.classList.remove('active')
+}
+yellow.onclick = function(e){
+	context.fillStyle = 'yellow'
+	context.strokeStyle = 'yellow'
+	yellow.classList.add('active')
+	green.classList.remove('active')
+	blue.classList.remove('active')
+	red.classList.remove('active')
+}
+
 /**
  *
  *私有工具函数
@@ -37,6 +70,16 @@ function listenToUser(canvas, context) {
 	var lastPoint = {'x': undefined, 'y': undefined}
 	var using = false
 	var eraserEnabled = false
+	eraser.onclick = function (e) {
+		eraserEnabled = true
+		eraser.classList.add('active')
+		pen.classList.remove('active')
+	}
+	pen.onclick = function (e) {
+		eraserEnabled = false
+		pen.classList.add('active')
+		eraser.classList.remove('active')
+	}
 	if(document.body.ontouchstart !== undefined) {
 		canvas.ontouchstart = function (e) {
 			var x = e.touches[0].clientX
@@ -49,7 +92,7 @@ function listenToUser(canvas, context) {
 			}
 		}
 		canvas.ontouchmove = function (e) {
-			e.preventDefault();
+			e.preventDefault()
 			var x = e.touches[0].clientX
 			var y = e.touches[0].clientY
 			if(using) {
@@ -82,7 +125,7 @@ function listenToUser(canvas, context) {
 			var y = e.clientY
 			if(using) {
 				if(eraserEnabled) {
-					context.clearRect(x-5, y-5, 10, 10)
+					context.clearRect(x-7.5, y-7.5, 15, 15)
 				}
 				else{
 					var newPoint = {'x': x, 'y': y}
@@ -94,16 +137,5 @@ function listenToUser(canvas, context) {
 		canvas.onmouseup = function (e) {
 			using = false
 		}
-	}
-
-	
-	
-	eraser.onclick = function (e) {
-		eraserEnabled = true
-		actions.className = 'actions x'
-	}
-	brush.onclick = function (e) {
-		eraserEnabled = false
-		actions.className = 'actions'
 	}
 }
