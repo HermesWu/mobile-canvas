@@ -9,6 +9,7 @@ red.onclick = function(e){
 	green.classList.remove('active')
 	blue.classList.remove('active')
 	yellow.classList.remove('active')
+	black.classList.remove('active')
 }
 green.onclick = function(e){
 	context.fillStyle = 'green'
@@ -17,6 +18,7 @@ green.onclick = function(e){
 	red.classList.remove('active')
 	blue.classList.remove('active')
 	yellow.classList.remove('active')
+	black.classList.remove('active')
 }
 blue.onclick = function(e){
 	context.fillStyle = 'blue'
@@ -25,6 +27,7 @@ blue.onclick = function(e){
 	green.classList.remove('active')
 	red.classList.remove('active')
 	yellow.classList.remove('active')
+	black.classList.remove('active')
 }
 yellow.onclick = function(e){
 	context.fillStyle = 'yellow'
@@ -33,6 +36,16 @@ yellow.onclick = function(e){
 	green.classList.remove('active')
 	blue.classList.remove('active')
 	red.classList.remove('active')
+	black.classList.remove('active')
+}
+black.onclick = function(e){
+	context.fillStyle = 'black'
+	context.strokeStyle = 'black'
+	black.classList.add('active')
+	green.classList.remove('active')
+	blue.classList.remove('active')
+	red.classList.remove('active')
+	yellow.classList.remove('active')
 }
 
 /**

@@ -51,6 +51,9 @@ ul,ol{list-style: none;}
 .colors li.yellow{
 	background: yellow;
 }
+.colors li.black{
+	background: black;
+}
 .colors li.active {
 	transform: scale(1.2);
 }
