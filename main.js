@@ -1,5 +1,6 @@
 var canvas = document.getElementById('x')
 var context = canvas.getContext('2d')
+var lineWidth = 5
 autoSetCanvasSize(canvas)
 listenToUser(canvas, context)
 red.onclick = function(e){
@@ -47,7 +48,25 @@ black.onclick = function(e){
 	red.classList.remove('active')
 	yellow.classList.remove('active')
 }
-
+thin.onclick = function (e) {
+	lineWidth = 5
+}
+thick.onclick = function(e) {
+	lineWidth = 7
+}
+clear.onclick = function (e) {
+	context.clearRect(0, 0, canvas.width, canvas.height)
+}
+save.onclick = function (e) {
+	var url = canvas.toDataURL('image/png')
+	var a = document.createElement('a')
+	a.href = url
+	document.body.appendChild(a)
+	a.download = '我的画板'
+	a.target = '_blank'
+	
+	a.click(                              )
+}
 /**
  *
  *私有工具函数
@@ -66,8 +85,8 @@ function drawCirle (x, y, radius) {
 }
 function drawLine (x1, y1, x2, y2) {
 	context.beginPath()
-	context.moveTo(x1, y1)
 	context.lineWidth = 5
+	context.moveTo(x1, y1)
 	context.lineTo(x2, y2)
 	context.stroke()
 	context.closePath()
@@ -106,8 +125,8 @@ function listenToUser(canvas, context) {
 		}
 		canvas.ontouchmove = function (e) {
 			e.preventDefault()
-			var x = e.touches[0].clientX
-			var y = e.touches[0].clientY
+			var x = e.touches[0].clientX +0.5
+			var y = e.touches[0].clientY 
 			if(using) {
 				if(eraserEnabled) {
 					context.clearRect(x-5, y-5, 10, 10)
